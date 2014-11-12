@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  RootViewController.h
 //  RateTheInstructor
 //
 //  Created by Tra` Beo' on 11/12/14.
@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface RootViewController : UITableViewController
+<UITableViewDataSource, UITableViewDelegate>
 
 @end
-
