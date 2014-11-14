@@ -8,7 +8,7 @@
 
 #import "RootViewController.h"
 #import "DetailViewController.h"
-
+#import "Instructor.h"
 
 @interface RootViewController () //<NSURLConnectionDelegate>
 @property (copy, nonatomic) NSArray * allInstructors;
@@ -22,31 +22,21 @@
     
     // Create the request.
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://bismarck.sdsu.edu/rateme/list"]];
-    
-    // Create url connection and fire request
+    //  Create url connection and fire request
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-
-    
-//    NSURLRequest *theRequest=[NSURLRequest
-//                              requestWithURL:[NSURL URLWithString: @"http://bismarck.sdsu.edu/rateme/list"]
-//                              cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-//
-//    self.returnData = [NSURLConnection sendSynchronousRequest:theRequest returningResponse:nil error:nil];
+//        NSURLSession *session = [NSURLSession sharedSession];
+//        [[session dataTaskWithURL:[NSURL URLWithString:@"http://bismarck.sdsu.edu/rateme/list"]
+//               completionHandler:^(NSData *data, NSURLResponse *response,NSError *error) {
+//                   NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 //    
+//                   NSData * jsonData = [jsonString dataUsingEncoding:NSUnicodeStringEncoding];
+//                   self.allInstructors = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers
+//                                                                           error:nil];
+//                   [self.tableView reloadData];
 //    
-//    NSString *jsonString = [[NSString alloc] initWithData:self.returnData encoding:NSUTF8StringEncoding];
-//    
-//    NSData * jsonData = [jsonString dataUsingEncoding:NSUnicodeStringEncoding];
-//    self.allInstructors = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers
-//                                                           error:nil];
-//    UITableView *tableView = (id)[self.view viewWithTag:1];
-    //    [tableView registerClass:[NameAndColorCell class]
-    //      forCellReuseIdentifier:CellTableIdentifier];
-//    
-//    UIEdgeInsets contentInset = tableView.contentInset;
-//    contentInset.top = 20;
-//    [tableView setContentInset:contentInset];
+//               }]resume];
 }
+
 
 
 #pragma mark NSURLConnection Delegate Methods
@@ -71,12 +61,12 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    // The request is complete and data has been received
-    // You can parse the stuff in your instance variable now
-    NSString *jsonString = [[NSString alloc] initWithData:self.returnData encoding:NSUTF8StringEncoding];
+    //     The request is complete and data has been received
+    //     You can parse the stuff in your instance variable now
+    //NSString *jsonString = [[NSString alloc] initWithData:self.returnData encoding:NSUTF8StringEncoding];
     
-    NSData * jsonData = [jsonString dataUsingEncoding:NSUnicodeStringEncoding];
-    self.allInstructors = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers
+    //NSData * jsonData = [jsonString dataUsingEncoding:NSUnicodeStringEncoding];
+    self.allInstructors = [NSJSONSerialization JSONObjectWithData:self.returnData options:NSJSONReadingMutableContainers
                                                             error:nil];
     [self.tableView reloadData];
 }
@@ -115,17 +105,16 @@ titleForHeaderInSection:(NSInteger)section {
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Instructor";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
-                             CellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:CellIdentifier];
     }
     
-    NSDictionary * currProf = [self.allInstructors objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",[currProf objectForKey:@"firstName"],[currProf objectForKey:@"lastName"]];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"id: %@",[currProf objectForKey:@"id"]];
+    NSDictionary * currentInstructor = [self.allInstructors objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@, %@",[currentInstructor objectForKey:@"firstName"],[currentInstructor objectForKey:@"lastName"]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"id: %@",[currentInstructor objectForKey:@"id"]];
     
     return cell;
 }
@@ -138,12 +127,25 @@ titleForHeaderInSection:(NSInteger)section {
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     DetailViewController *detailVC = segue.destinationViewController;
-    detailVC.navigationItem.title = @"Instructor Info";
-    NSDictionary * currProf = [self.allInstructors objectAtIndex:indexPath.row];
+    detailVC.navigationItem.title = @"Information";
+    NSDictionary * currentInstructor = [self.allInstructors objectAtIndex:indexPath.row];
     
-    detailVC.labelText = [NSString stringWithFormat:@"%@ %@",[currProf objectForKey:@"firstName"],[currProf objectForKey:@"lastName"]];
+    NSString *detailURL = [NSString stringWithFormat:@"http://bismarck.sdsu.edu/rateme/instructor/%@",[currentInstructor objectForKey:@"id"]];
+    Instructor *instructorWithDetail = [[Instructor alloc] init];
+    [instructorWithDetail loadInstructorDetail:detailURL];
+    detailVC.nameText = [instructorWithDetail fullName];
+    NSString *currId =[instructorWithDetail instructorId];
+    detailVC.idText = currId;
+    detailVC.officeText = [instructorWithDetail office];
+    detailVC.emailText = [instructorWithDetail email];
+    detailVC.phoneText = [instructorWithDetail phone];
+    detailVC.averageRatingText = [instructorWithDetail averageRating];
+    detailVC.totalRatingsText = [instructorWithDetail totalRatings];
+    detailVC.commentURL = [NSString stringWithFormat:@"http://bismarck.sdsu.edu/rateme/comments/%@",currId];
+    detailVC.ratingData = [instructorWithDetail ratingData];
     
 }
 

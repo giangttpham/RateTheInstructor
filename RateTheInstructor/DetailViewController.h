@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface DetailViewController : UIViewController
-@property NSString * labelText;
-
+@property NSString *nameText;
+@property NSString *idText;
+@property NSString *officeText;
+@property NSString *emailText;
+@property NSString *phoneText;
+@property NSString *averageRatingText;
+@property NSString *totalRatingsText;
+@property NSString *commentURL;
+@property NSDictionary *ratingData;
+@property NSArray *commentData;
 @end

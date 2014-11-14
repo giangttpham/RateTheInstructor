@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED4E3DB81A1568DE00F9F2C2 /* RatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4E3DB71A1568DE00F9F2C2 /* RatingViewController.m */; };
+		ED4E3DBB1A169A1400F9F2C2 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4E3DBA1A169A1400F9F2C2 /* Comment.m */; };
 		ED7DD3541A1409A400D0DCC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7DD3531A1409A400D0DCC3 /* main.m */; };
 		ED7DD3571A1409A400D0DCC3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7DD3561A1409A400D0DCC3 /* AppDelegate.m */; };
 		ED7DD35D1A1409A400D0DCC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7DD35B1A1409A400D0DCC3 /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 		ED7DD36E1A1409A400D0DCC3 /* RateTheInstructorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7DD36D1A1409A400D0DCC3 /* RateTheInstructorTests.m */; };
 		ED7DD3791A140A2E00D0DCC3 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7DD3781A140A2E00D0DCC3 /* RootViewController.m */; };
 		ED7DD37C1A140A7700D0DCC3 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7DD37B1A140A7700D0DCC3 /* DetailViewController.m */; };
+		ED7DD37F1A142ABB00D0DCC3 /* Instructor.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7DD37E1A142ABB00D0DCC3 /* Instructor.m */; };
+		ED7DD3821A143D3700D0DCC3 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED7DD3811A143D3700D0DCC3 /* CommentViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +32,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED4E3DB61A1568DE00F9F2C2 /* RatingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingViewController.h; sourceTree = "<group>"; };
+		ED4E3DB71A1568DE00F9F2C2 /* RatingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingViewController.m; sourceTree = "<group>"; };
+		ED4E3DB91A169A1400F9F2C2 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		ED4E3DBA1A169A1400F9F2C2 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		ED7DD34E1A1409A400D0DCC3 /* RateTheInstructor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateTheInstructor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7DD3521A1409A400D0DCC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED7DD3531A1409A400D0DCC3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -43,6 +51,10 @@
 		ED7DD3781A140A2E00D0DCC3 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		ED7DD37A1A140A7700D0DCC3 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		ED7DD37B1A140A7700D0DCC3 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		ED7DD37D1A142ABB00D0DCC3 /* Instructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instructor.h; sourceTree = "<group>"; };
+		ED7DD37E1A142ABB00D0DCC3 /* Instructor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Instructor.m; sourceTree = "<group>"; };
+		ED7DD3801A143D3700D0DCC3 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		ED7DD3811A143D3700D0DCC3 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,10 +102,18 @@
 				ED7DD35E1A1409A400D0DCC3 /* Images.xcassets */,
 				ED7DD3601A1409A400D0DCC3 /* LaunchScreen.xib */,
 				ED7DD3511A1409A400D0DCC3 /* Supporting Files */,
+				ED7DD37D1A142ABB00D0DCC3 /* Instructor.h */,
+				ED7DD37E1A142ABB00D0DCC3 /* Instructor.m */,
+				ED4E3DB91A169A1400F9F2C2 /* Comment.h */,
+				ED4E3DBA1A169A1400F9F2C2 /* Comment.m */,
 				ED7DD3771A140A2E00D0DCC3 /* RootViewController.h */,
 				ED7DD3781A140A2E00D0DCC3 /* RootViewController.m */,
 				ED7DD37A1A140A7700D0DCC3 /* DetailViewController.h */,
 				ED7DD37B1A140A7700D0DCC3 /* DetailViewController.m */,
+				ED7DD3801A143D3700D0DCC3 /* CommentViewController.h */,
+				ED7DD3811A143D3700D0DCC3 /* CommentViewController.m */,
+				ED4E3DB61A1568DE00F9F2C2 /* RatingViewController.h */,
+				ED4E3DB71A1568DE00F9F2C2 /* RatingViewController.m */,
 			);
 			path = RateTheInstructor;
 			sourceTree = "<group>";
@@ -224,10 +244,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED7DD3821A143D3700D0DCC3 /* CommentViewController.m in Sources */,
 				ED7DD3571A1409A400D0DCC3 /* AppDelegate.m in Sources */,
+				ED7DD37F1A142ABB00D0DCC3 /* Instructor.m in Sources */,
+				ED4E3DB81A1568DE00F9F2C2 /* RatingViewController.m in Sources */,
 				ED7DD3541A1409A400D0DCC3 /* main.m in Sources */,
 				ED7DD3791A140A2E00D0DCC3 /* RootViewController.m in Sources */,
 				ED7DD37C1A140A7700D0DCC3 /* DetailViewController.m in Sources */,
+				ED4E3DBB1A169A1400F9F2C2 /* Comment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +442,7 @@
 				ED7DD3731A1409A400D0DCC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ED7DD3741A1409A400D0DCC3 /* Build configuration list for PBXNativeTarget "RateTheInstructorTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +451,7 @@
 				ED7DD3761A1409A400D0DCC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
